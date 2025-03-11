@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakaash Panigrahi - Machine Learning Engineer</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #94a3b8;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --darker: #020617;
+            --success: #10b981;
+            --surface: #1e293b;
+            --surface-light: #334155;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--light);
+            background-color: var(--darker);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 6rem 0;
+            background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8)),
+                        url('/api/placeholder/1200/600') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--light);
+            color: var(--light);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.25rem;
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .featured-projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: var(--surface);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: var(--surface-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.5rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .project-content p {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--primary);
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .experience {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item h3 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .timeline-item h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .timeline-item ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .publications {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .publication-item {
+            background-color: var(--surface);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .publication-item .publication-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--surface-light);
+        }
+        
+        .publication-content {
+            padding: 1.5rem;
+        }
+        
+        .publication-content h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        
+        .publication-content p {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .publication-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--dark);
+            border-top: 1px solid var(--surface-light);
+        }
+        
+        .publication-meta .venue {
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .publication-meta .links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .publication-meta .links a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .publication-meta .links a:hover {
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-info {
+            margin-top: 2rem;
+            color: var(--secondary);
+            font-size: 0.875rem;
+        }
+        
+        /* Dark theme specific styles for alternating sections */
+        section:nth-of-type(even) {
+            background-color: var(--dark);
+        }
+        
+        section:nth-of-type(odd) {
+            background-color: var(--darker);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Aakaash Panigrahi</div>
+                <div class="nav-links">
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Machine Learning Engineer</h1>
+            <p>Specializing in deep learning, computer vision, generative AI, and NLP. Building and scaling AI solutions with expertise in satellite imagery, medical imaging, and sports analytics.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#publications" class="btn btn-outline">Read Publications</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+                <p>A selection of my most impactful work in machine learning, computer vision, and AI systems</p>
+            </div>
+            
+            <div class="featured-projects">
+                <div class="project-card">
+                    <div class="project-image">GeoEngine Platform</div>
+                    <div class="project-content">
+                        <h3>GeoEngine</h3>
+                        <p>End-to-end platform for managing satellite imagery processing, powering 30+ AI solutions for crop monitoring, property inspection, and disaster response.</p>
+                        <div class="skills-container">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">MRI Style Transfer</div>
+                    <div class="project-content">
+                        <h3>MRI Style Transfer</h3>
+                        <p>CycleGAN model to transform T1-MRI images into T2-MRI images and vice-versa, enhancing contrast adaptation for medical imaging with 97% SSIM score.</p>
+                        <div class="skills-container">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">CycleGAN</span>
+                            <span class="skill-tag">Medical Imaging</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">Sports Analytics System</div>
+                    <div class="project-content">
+                        <h3>Real-time Sports Analytics</h3>
+                        <p>Optimized real-time homography, ball-possession graphs, and player/team statistics, reducing processing latency by 78% for in-game analytics.</p>
+                        <div class="skills-container">
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">Real-time Processing</span>
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">Sports Analytics</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+                <p>My journey building AI solutions across sports analytics, geospatial intelligence, and enterprise systems</p>
+            </div>
+            
+            <div class="experience">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>
+                            <span>Senior Machine Learning Engineer</span>
+                            <span>Nov 2023 – Present</span>
+                        </h3>
+                        <h4>EvalSports AI</h4>
+                        <ul>
+                            <li>Designed and implemented key sports analytics components, including optimized real-time homography, ball-possession graphs, and player/team statistics</li>
+                            <li>Reduced overall processing latency by 78 percent</li>
+                            <li>Significantly enhanced real-time in-game analytics capabilities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>
+                            <span>Machine Learning Researcher</span>
+                            <span>May 2021 – Nov 2023</span>
+                        </h3>
+                        <h4>GranularAI</h4>
+                        <ul>
+                            <li>Curated and benchmarked large-scale geospatial datasets, training models on 32 A100 GPU nodes</li>
+                            <li>Led a team of 4 engineers to enhance GeoEngine's MLOps pipeline, enabling 30+ AI solutions</li>
+                            <li>Independently developed core GeoEngine modules, reducing experiment setup time from 1.5 hours to 5 minutes</li>
+                            <li>Authored and reviewed 3 research papers presented at leading conferences like CVPR and IGARSS</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>
+                            <span>Applications Engineer</span>
+                            <span>Jul 2014 – May 2021</span>
+                        </h3>
+                        <h4>Oracle India</h4>
+                        <ul>
+                            <li>Developed and optimized backend applications for lifecycle management of WLS and OPMN</li>
+                            <li>Ensured seamless deployments across 1,000s of production PODs in 100+ data centers globally</li>
+                            <li>Automated key provisioning and scale-out operations, reducing downtime by 27%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="publications" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Publications</h2>
+                <p>My contributions to the fields of computer vision and geospatial AI</p>
+            </div>
+            
+            <div class="publications">
+                <div class="publication-item">
+                    <img class="publication-image" src="/api/placeholder/800/400" alt="Satellite Imagery Analysis">
+                    <div class="publication-content">
+                        <h3>Have Foundational Models Seen Satellite Images?</h3>
+                        <p>This research investigates the capabilities and limitations of foundation models like CLIP, DALL-E, and GPT-4V in understanding and processing satellite imagery data. We propose novel benchmarks to evaluate these models and identify key areas for improvement in geospatial understanding. Our findings reveal significant gaps in how foundation models interpret spectral information and geospatial context compared to specialized remote sensing models.</p>
+                    </div>
+                    <div class="publication-meta">
+                        <span class="venue">IGARSS, 2023</span>
+                        <div class="links">
+                            <a href="#">View Paper</a>
+                            <a href="#">Presentation</a>
+                            <a href="#">Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <img class="publication-image" src="/api/placeholder/800/400" alt="GeoEngine Architecture">
+                    <div class="publication-content">
+                        <h3>GeoEngine: A Platform for Production-Ready Geospatial Research</h3>
+                        <p>We present GeoEngine, an end-to-end platform for managing satellite imagery processing that bridges the gap between research and production in geospatial AI. The platform integrates dataset curation, model training, inference orchestration, and deployment tools specifically designed for geospatial workflows. Our implementation enables efficient development and deployment of over 30 AI solutions for applications ranging from precision agriculture to disaster response, with a 94% reduction in model deployment time compared to traditional approaches.</p>
+                    </div>
+                    <div class="publication-meta">
+                        <span class="venue">CVPR, 2022</span>
+                        <div class="links">
+                            <a href="#">View Paper</a>
+                            <a href="#">Presentation</a>
+                            <a href="#">Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <img class="publication-image" src="/api/placeholder/800/400" alt="Multi-Task Change Detection Visualization">
+                    <div class="publication-content">
+                        <h3>QFabric: Multi-Task Change Detection Dataset</h3>
+                        <p>We introduce QFabric, a comprehensive dataset for multi-task change detection in satellite imagery. The dataset contains over 50,000 image pairs with pixel-level annotations across five change detection tasks: land-use change, building development, deforestation, flooding, and agricultural shifts. We benchmark various deep learning architectures and propose a novel multi-task learning framework that leverages shared representations across tasks. Our results demonstrate significant improvements in detection accuracy and generalization to new geographic regions compared to single-task approaches.</p>
+                    </div>
+                    <div class="publication-meta">
+                        <span class="venue">CVPR, 2021</span>
+                        <div class="links">
+                            <a href="#">View Paper</a>
+                            <a href="#">Presentation</a>
+                            <a href="#">Dataset</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Skills</h2>
+                <p>My toolkit for building advanced AI solutions</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto;">
+                <div>
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Expertise</h3>
+                    <ul style="list-style-type: none; color: var(--secondary);">
+                        <li>Machine Learning</li>
+                        <li>Computer Vision</li>
+                        <li>Natural Language Processing</li>
+                        <li>Backend Development</li>
+                        <li>Generative AI</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Languages</h3>
+                    <ul style="list-style-type: none; color: var(--secondary);">
+                        <li>Python</li>
+                        <li>JAVA</li>
+                        <li>Shell</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Libraries</h3>
+                    <ul style="list-style-type: none; color: var(--secondary);">
+                        <li>PyTorch</li>
+                        <li>OpenMMLab</li>
+                        <li>Scikit-Learn</li>
+                        <li>Numpy</li>
+                        <li>Pandas</li>
+                        <li>Rasterio</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Backend & DevOps</h3>
+                    <ul style="list-style-type: none; color: var(--secondary);">
+                        <li>FastAPI</li>
+                        <li>Airflow</li>
+                        <li>LangChain</li>
+                        <li>Docker</li>
+                        <li>Kubernetes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/aakaashpanigrahi">LinkedIn</a>
+                <a href="mailto:aakaashpanigrahi301191@gmail.com">Email</a>
+                <a href="#">GitHub</a>
+            </div>
+            
+            <div>
+                <p>aakaashpanigrahi301191@gmail.com</p>
+                <p>+91 6360316852</p>
+            </div>
+            
+            <div class="footer-info">
+                <p>© 2025 Aakaash Panigrahi. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
