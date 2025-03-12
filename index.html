@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aakaash Panigrahi - Machine Learning Engineer</title>
+    <title>Aakaash Panigrahi</title>
     <style>
         :root {
             --primary: #3b82f6;
@@ -77,65 +77,76 @@
         
         .hero {
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px; /* Increased top padding for a better visual break */
             background-color: #0d1117; /* Dark background */
             color: #ffffff; /* Light text */
         }
         
+        /* Title */
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3rem; /* Increased font size slightly */
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
+        /* Subheading */
+        .hero .subheading {
+            font-size: 1.5rem;
+            color: #a8b3cf; /* Lighter shade for subtle contrast */
+            font-weight: 500;
+            margin-bottom: 25px; /* More spacing before paragraphs */
+        }
+        
+        /* Paragraph Styling */
         .hero p {
             font-size: 1.2rem;
             max-width: 750px;
-            margin: 0 auto 15px auto;
-            line-height: 1.6; /* Increased spacing for readability */
-        }
-
-        .hero p:nth-of-type(1) {
-            font-size: 1.4rem;
-            color: #a8b3cf; /* Lighter shade for subtle contrast */
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-                
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
+            margin: 0 auto 18px auto;
+            line-height: 1.7; /* Increased spacing for better readability */
+        } 
         
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .btn-outline {
-            border: 2px solid var(--light);
-            color: var(--light);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--light);
-            color: var(--dark);
-        }
-        
+        /* Button Group */
         .btn-group {
+            margin-top: 30px;
             display: flex;
             gap: 1rem;
             justify-content: center;
         }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
         
+        /* Primary Button */
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05); /* Subtle scaling effect */
+        }
+        
+        /* Secondary Buttons */
+        .btn-outline {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--light);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05); /* Slight scale on hover */
+        }
         .section {
             padding: 5rem 0;
         }
@@ -404,7 +415,7 @@
 <section class="hero">
     <div class="container">
         <h1>Hi, I’m Aakaash 👋</h1>
-        <p>Building AI that makes an impact.</p>
+        <p class="subheading">Building AI that makes an impact.</p>
         <p>
             I specialize in machine learning, deep learning, NLP, and generative AI, with a strong focus on 
             developing scalable, real-world solutions. I love discussing new AI research, collaborating on 
@@ -421,6 +432,7 @@
         </div>
     </div>
 </section>
+
 
     
     <section id="projects" class="section">
